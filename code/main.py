@@ -5,7 +5,21 @@ llm= init_chat_model(
     temperature = 1.0
 )
 
+history = [
+    {"role": "system",
+    "content": "You are a helpful assistant."}
+]
+
 print("Welcome to Cue chat")
-question = input("Ask your question: ")
-response = llm.invoke( "You :" + question)  #LLM Call.....
-print(f"Response: {response.text}")
+while True:
+    question = input("Ask your question: ")
+    if not question:
+        continue
+    if question.lower() in {"exit", "quit", "bye"}:
+        print("Exiting the chat. Goodbye!")
+        break
+    history.append({"role": "user", "content": question})
+    response = llm.invoke(history)# LLM Call.....
+    history.append({"role": "assistant", "content": response.text})
+    print(f"Bot: {response.text}")
+
