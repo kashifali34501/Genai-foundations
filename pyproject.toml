@@ -1,0 +1,20 @@
+[project]
+name = "genai-foundations"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Kashifali34501", email = "kashifali34501@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "langchain>=1.4.4",
+    "langchain-ollama>=1.1.0",
+]
+
+[project.scripts]
+genai-foundations = "genai_foundations:main"
+
+[build-system]
+requires = ["uv_build>=0.12.13,<0.13.0"]
+build-backend = "uv_build"
